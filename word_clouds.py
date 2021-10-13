@@ -76,45 +76,42 @@ def print_HTML_file(body, title):
 def main():
     f = input("Masukkan : ")
     stop_word = open("C:/Users/Administrator/Downloads/stopwords.txt","r")
-    x = open(f,"r")
-    y = ''
-    for i in x.readlines():
-        y+=i
-    
-    z =''
-    for i in y:
+    file = open(f,"r")
+    x = file.read()
+    y = stop_word.read()
+    y = y.split()
+    a = ''
+    for i in x:
         if i not in string.punctuation:
-            z+=i
+            a+=i
+    a=a.split()
+    for i in a:
+        if i in y:
+            a.remove(i)
+    for i in a:
+        if i in y:
+            a.remove(i)
             
-    z =z.split()
-    a =''
-    for i in stop_word.readlines():
-        a+=i
-
-    a = a.split()
-
-    b = []
-    for i in z:
-        if i not in a:
-            b.append(i)
+    a.sort()
+    del a[:17]
     freq = [a.count(i) for i in a]
-    pairs = {(i,j) for (i,j) in zip(freq,b)}
+    pairs = {(i,j) for (i,j) in zip(freq,a)}
     pairs = list(pairs)
-    pairs = sorted(pairs,reverse = True)
+    pairs.sort()
+    for i in pairs:
+        if i[0]<2:
+            pairs.remove(i)
+    
     high_count = 20
     low_count = 2
     body = ''
-    for cnt, word in pairs[:56]:
+    for cnt, word in pairs:
         body = body + " " + make_HTML_word(word, cnt, high_count, low_count)
     box = make_HTML_box(body)  # creates HTML in a box
     # writes HTML to file name 'testFile.html'
     iterr = iter(pairs[:56])
-    for i in iterr:
-        print(f"""
-{next(iterr)} {next(iterr)} {next(iterr)} {next(iterr)}
-""")
-        
-    print_HTML_file(box, 'testFile')
+    
+    print_HTML_file(box, 'File')
     
 
 if __name__ == '__main__':

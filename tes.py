@@ -74,7 +74,7 @@ def main():
     high_count = 20
     low_count = 2
     body = ''
-    for word, cnt in pairs[::56]:
+    for word, cnt in pairs:
         body = body + " " + make_HTML_word(word, cnt, high_count, low_count)
     box = make_HTML_box(body)  # creates HTML in a box
     # writes HTML to file name 'testFile.html'
