@@ -48,7 +48,6 @@ while loop:
                 total.append(harga)
             else:
                 print("Maaf kami hanya menyediakan beberapa menu saja ^^")
-                loop=False
                 
         elif user2==2:
             celana = ["Jeans","Celana Panjang","Celana Pendek"]
@@ -77,7 +76,6 @@ while loop:
                 total.append(harga)
             else:
                 print("Maaf kami hanya menyediakan beberapa menu saja ^^")
-                loop = False
                 
         elif user2==3:
             sepatu = ["Panther","Warrior","Pink"]
@@ -106,11 +104,9 @@ while loop:
                 total.append(harga)
             else:
                 print("Maaf kami hanya menyediakan beberapa menu saja ^^")
-                loop = False
                 
         else:
           print("Maaf kami hanya menyediakan beberapa menu saja ^^")
-          loop = False
 
     elif user==2:
         try:
