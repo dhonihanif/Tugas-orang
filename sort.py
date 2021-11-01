@@ -4,6 +4,17 @@ buah = ["Jagung","Kiwi","Apel",
         "Rambutan"]
 
 print("Data awal\t :\n",buah)
+
+buah.remove(buah[0])
+print("Data buah setelah penghapusan indeks ke - 0\t :\n",buah)
+
+if "Jagung" not in buah or "Jeruk" not in buah:
+    buah.append("Jagung")
+    print("Data buah setelah penambahan\t :\n",buah)
+else:
+    print("sudah ada jagung atau jeruknya")
+
+
 buah_sort_by_abjad = []
 while buah:
     data_pertama = buah[0]
