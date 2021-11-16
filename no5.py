@@ -9,7 +9,8 @@ def is_prima (x):
 
 def cari_bilangan_prima (awal, akhir):
   list_bilangan_prima = []
-
+  if awal==1:
+    awal+=1
   for x in range(awal, akhir + 1):
     if is_prima(x):
       list_bilangan_prima.append(x)
