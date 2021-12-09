@@ -41,6 +41,14 @@ class Informasi_mahasiswa:
             self.data["kelas"].append(kelas)
             self.data["smt"].append(semester)
             self.data["umur"].append(umur)
+            print()
+            print("Mengisi Data Matakuliah")
+            matkul1 = input("Grade matkul 1 : ")
+            matkul2 = input("Grade matkul 2 : ")
+            matkul3 = input("Grade matkul 3 : ")
+            matkul["matkul 1"].append(matkul1)
+            matkul["matkul 2"].append(matkul2)
+            matkul["matkul 3"].append(matkul3)
             print("Data berhasil ditambahkan")
         else:
             print("Nim telah digunakan")
@@ -48,12 +56,35 @@ class Informasi_mahasiswa:
 
     def read(self):
         print(" Data Mahasiswa ".center(70,'-'))
-        print("Nama\t\t Nim\t\t Kelas\t\t Semester\t\t Umur")
+        print("Nama\t Nim\t Kelas\t Semester\t Umur\t Keterangan")
         for i,j,k,l,m,n in zip(range(1,len(self.data["name"])+1),self.data["name"],
                              self.data["nim"],self.data["kelas"],
                                self.data["smt"],self.data["umur"]
                              ):
-            print(i,".",j,k,l,m,n)
+            if matkul["matkul 1"][i-1]>="C" or matkul["matkul 1"][i-1]>="c":
+                if matkul["matkul 2"][i-1]>="C" or matkul["matkul 2"][i-1]>="c":
+                    if matkul["matkul 3"][i-1]>="C" or matkul["matkul 3"][i-1]>="c":
+                        print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1, 2 dan 3")
+                    else:
+                        print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1 dan 2")
+                elif matkul["matkul 3"][i-1]>="C" or matkul["matkul 3"][i-1]:
+                    print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1 dan 3")
+                else:
+                    print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1")
+            elif matkul["matkul 2"][i-1]>="C" or matkul["matkul 2"][i-1]>="c":
+                if matkul["matkul 1"][i-1]>="C" or matkul["matkul 1"][i-1]>="c":
+                    if matkul["matkul 3"][i-1]>="C" or matkul["matkul 3"][i-1]>="c":
+                        print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1, 2 dan 3")
+                    else:
+                        print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1 dan 2")
+                elif matkul["matkul 3"][i-1]>="C" or matkul["matkul 3"][i-1]>="c":
+                    print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 2 dan 3")
+                else:
+                    print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 2")
+            elif matkul["matkul 3"][i-1]>="C" or matkul["matkul 3"][i-1]>="c":
+                print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 3")
+            else:
+                print(i,".",j,k,l,m,n,"Lulus")
         print()
     def update(self):
         print(" Mengupdate Data Mahasiswa ".center(70,'-'))
@@ -109,6 +140,7 @@ class Informasi_mahasiswa:
                  "Sebaran umur mahasiswa",
                  "Lama masa studi",
                  "Mencari mahasiswa berdasarkan name/nim/kelas/umur",
+                 "Laporan kelulusan mahasiswa",
                  "Exit"]
             for i,j in zip(range(1,len(x)+1),x):
                 print(i,".",j)
@@ -196,7 +228,36 @@ class Informasi_mahasiswa:
                     print("Sesuaikan inputan dengan menu diatas!!!")
                     print()
             elif y==5:
-                print("Terumakasih")
+                print("No\t Nama\t Nim\t Kelas\t Keterangan")
+                for i,j,k,l in zip(range(1,len(self.data["name"])+1),self.data["name"],
+                             self.data["nim"],self.data["kelas"]
+                             ):
+                    if matkul["matkul 1"][i-1]>="C" or matkul["matkul 1"][i-1]>="c":
+                        if matkul["matkul 2"][i-1]>="C" or matkul["matkul 2"][i-1]>="c":
+                            if matkul["matkul 3"][i-1]>="C" or matkul["matkul 3"][i-1]>="c":
+                                print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1, 2 dan 3")
+                            else:
+                                print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1 dan 2")
+                        elif matkul["matkul 3"][i-1]>="C" or matkul["matkul 3"][i-1]:
+                            print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1 dan 3")
+                        else:
+                            print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1")
+                    elif matkul["matkul 2"][i-1]>="C" or matkul["matkul 2"][i-1]>="c":
+                        if matkul["matkul 1"][i-1]>="C" or matkul["matkul 1"][i-1]>="c":
+                            if matkul["matkul 3"][i-1]>="C" or matkul["matkul 3"][i-1]>="c":
+                                print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1, 2 dan 3")
+                            else:
+                                print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 1 dan 2")
+                        elif matkul["matkul 3"][i-1]>="C" or matkul["matkul 3"][i-1]>="c":
+                            print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 2 dan 3")
+                        else:
+                            print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 2")
+                    elif matkul["matkul 3"][i-1]>="C" or matkul["matkul 3"][i-1]>="c":
+                        print(i,".",j,k,l,m,n,"Tidak Lulus Matkul 3")
+                    else:
+                        print(i,".",j,k,l,m,n,"Lulus")
+            elif y==6:
+                print("Terimakasih")
                 break
             else:
                 print("Tidak ada selain itu")
@@ -208,6 +269,11 @@ data = {
     "kelas":[],
     "smt":[],
     "umur":[]
+    }
+matkul = {
+    "matkul 1":[],
+    "matkul 2":[],
+    "matkul 3":[]
     }
 o = Informasi_mahasiswa(data)
 if __name__ == '___main__':
